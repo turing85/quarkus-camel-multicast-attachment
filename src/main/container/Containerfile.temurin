@@ -1,0 +1,29 @@
+ARG TEMURIN_IMAGE="docker.io/eclipse-temurin:25.0.4.1_1-jre-alpine-3.24@sha256:3c0a9084927a221ccd1d007fcaf614465672c0af37aaa834c5184483afe56d61"
+
+FROM ${TEMURIN_IMAGE} AS runner
+ARG APP_DIR=/deployment
+ARG UID=1001
+
+USER root
+
+WORKDIR ${APP_DIR}
+COPY \
+  --chmod=555 \
+  target/quarkus-app/lib/ ${APP_DIR}/lib/
+COPY \
+  --chmod=444 \
+  target/quarkus-app/*.jar ${APP_DIR}/
+COPY \
+  --chmod=555 \
+  target/quarkus-app/app/ ${APP_DIR}/app/
+COPY \
+  --chmod=555 \
+  target/quarkus-app/quarkus/ ${APP_DIR}/quarkus/
+
+ENV LANGUAGE='en_US:en'
+USER ${UID}:${UID}
+ENTRYPOINT [ \
+  "java", \
+  "-jar", \
+  "quarkus-run.jar" \
+]
