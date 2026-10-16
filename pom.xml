@@ -37,10 +37,10 @@
         <!-- Quarkus versions -->
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>3.40.1</quarkus.platform.version>
+        <quarkus.platform.version>3.33.2.1</quarkus.platform.version>
 
         <!-- Quarkiverse versions -->
-        <quarkus-artemis.version>3.15.0</quarkus-artemis.version>
+        <quarkus-artemis.version>3.13.1</quarkus-artemis.version>
 
         <!-- Project setup -->
         <attach-elf.skip>true</attach-elf.skip>
